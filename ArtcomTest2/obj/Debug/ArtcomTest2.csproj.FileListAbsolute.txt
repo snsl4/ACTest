@@ -1,0 +1,13 @@
+C:\Users\snsl\source\repos\ArtcomTest2\ArtcomTest2\bin\Debug\ArtcomTest2.exe.config
+C:\Users\snsl\source\repos\ArtcomTest2\ArtcomTest2\bin\Debug\ArtcomTest2.exe
+C:\Users\snsl\source\repos\ArtcomTest2\ArtcomTest2\bin\Debug\ArtcomTest2.pdb
+C:\Users\snsl\source\repos\ArtcomTest2\ArtcomTest2\bin\Debug\EntityFramework.dll
+C:\Users\snsl\source\repos\ArtcomTest2\ArtcomTest2\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\snsl\source\repos\ArtcomTest2\ArtcomTest2\bin\Debug\EntityFramework.xml
+C:\Users\snsl\source\repos\ArtcomTest2\ArtcomTest2\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\snsl\source\repos\ArtcomTest2\ArtcomTest2\bin\Debug\ru\EntityFramework.resources.dll
+C:\Users\snsl\source\repos\ArtcomTest2\ArtcomTest2\obj\Debug\ArtcomTest2.csprojAssemblyReference.cache
+C:\Users\snsl\source\repos\ArtcomTest2\ArtcomTest2\obj\Debug\ArtcomTest2.csproj.CoreCompileInputs.cache
+C:\Users\snsl\source\repos\ArtcomTest2\ArtcomTest2\obj\Debug\ArtcomTest2.csproj.CopyComplete
+C:\Users\snsl\source\repos\ArtcomTest2\ArtcomTest2\obj\Debug\ArtcomTest2.exe
+C:\Users\snsl\source\repos\ArtcomTest2\ArtcomTest2\obj\Debug\ArtcomTest2.pdb

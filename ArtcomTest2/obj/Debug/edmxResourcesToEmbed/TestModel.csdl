@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ArtcomDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="CustomerId" />
+    </Key>
+    <Property Name="CustomerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK_t_order_t_customers" FromRole="t_customers" ToRole="t_order" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="OrderId" />
+    </Key>
+    <Property Name="OrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerId" Type="Int32" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK_t_order_t_customers" FromRole="t_order" ToRole="t_customers" />
+    <NavigationProperty Name="OrderProducts" Relationship="Self.FK_t_order_product_t_order" FromRole="t_order" ToRole="t_order_product" />
+  </EntityType>
+  <EntityType Name="OrderProduct">
+    <Key>
+      <PropertyRef Name="OrderId" />
+      <PropertyRef Name="ProductId" />
+    </Key>
+    <Property Name="OrderId" Type="Int32" Nullable="false" />
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <Property Name="Count" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Order" Relationship="Self.FK_t_order_product_t_order" FromRole="t_order_product" ToRole="t_order" />
+    <NavigationProperty Name="Product" Relationship="Self.FK_t_order_product_t_product" FromRole="t_order_product" ToRole="t_product" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ProductId" />
+    </Key>
+    <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProductPrice" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="OrderProducts" Relationship="Self.FK_t_order_product_t_product" FromRole="t_product" ToRole="t_order_product" />
+  </EntityType>
+  <Association Name="FK_t_order_t_customers">
+    <End Role="t_customers" Type="ArtcomDBModel.Customer" Multiplicity="1" />
+    <End Role="t_order" Type="ArtcomDBModel.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_customers">
+        <PropertyRef Name="CustomerId" />
+      </Principal>
+      <Dependent Role="t_order">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_order_product_t_order">
+    <End Role="t_order" Type="ArtcomDBModel.Order" Multiplicity="1" />
+    <End Role="t_order_product" Type="ArtcomDBModel.OrderProduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_order">
+        <PropertyRef Name="OrderId" />
+      </Principal>
+      <Dependent Role="t_order_product">
+        <PropertyRef Name="OrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_order_product_t_product">
+    <End Role="t_product" Type="ArtcomDBModel.Product" Multiplicity="1" />
+    <End Role="t_order_product" Type="ArtcomDBModel.OrderProduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_product">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="t_order_product">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ArtcomDBEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Customers" EntityType="ArtcomDBModel.Customer" />
+    <EntitySet Name="Orders" EntityType="ArtcomDBModel.Order" />
+    <EntitySet Name="OrderProducts" EntityType="ArtcomDBModel.OrderProduct" />
+    <EntitySet Name="Products" EntityType="ArtcomDBModel.Product" />
+    <AssociationSet Name="FK_t_order_t_customers" Association="Self.FK_t_order_t_customers">
+      <End Role="t_customers" EntitySet="Customers" />
+      <End Role="t_order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_order_product_t_order" Association="Self.FK_t_order_product_t_order">
+      <End Role="t_order" EntitySet="Orders" />
+      <End Role="t_order_product" EntitySet="OrderProducts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_order_product_t_product" Association="Self.FK_t_order_product_t_product">
+      <End Role="t_product" EntitySet="Products" />
+      <End Role="t_order_product" EntitySet="OrderProducts" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,255 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище ArtcomDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="t_customers">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="CustomerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerName" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="t_order">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerId" Type="int" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="t_order_product">
+          <Key>
+            <PropertyRef Name="OrderId" />
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="OrderId" Type="int" Nullable="false" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="Count" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="t_product">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ProductPrice" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_t_order_product_t_order">
+          <End Role="t_order" Type="Self.t_order" Multiplicity="1" />
+          <End Role="t_order_product" Type="Self.t_order_product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_order">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="t_order_product">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_t_order_product_t_product">
+          <End Role="t_product" Type="Self.t_product" Multiplicity="1" />
+          <End Role="t_order_product" Type="Self.t_order_product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="t_order_product">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_t_order_t_customers">
+          <End Role="t_customers" Type="Self.t_customers" Multiplicity="1" />
+          <End Role="t_order" Type="Self.t_order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_customers">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="t_order">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище ArtcomDBModelContainer">
+          <EntitySet Name="t_customers" EntityType="Self.t_customers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_order" EntityType="Self.t_order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_order_product" EntityType="Self.t_order_product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_product" EntityType="Self.t_product" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_t_order_product_t_order" Association="Self.FK_t_order_product_t_order">
+            <End Role="t_order" EntitySet="t_order" />
+            <End Role="t_order_product" EntitySet="t_order_product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_t_order_product_t_product" Association="Self.FK_t_order_product_t_product">
+            <End Role="t_product" EntitySet="t_product" />
+            <End Role="t_order_product" EntitySet="t_order_product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_t_order_t_customers" Association="Self.FK_t_order_t_customers">
+            <End Role="t_customers" EntitySet="t_customers" />
+            <End Role="t_order" EntitySet="t_order" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ArtcomDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="CustomerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_t_order_t_customers" FromRole="t_customers" ToRole="t_order" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerId" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK_t_order_t_customers" FromRole="t_order" ToRole="t_customers" />
+          <NavigationProperty Name="OrderProducts" Relationship="Self.FK_t_order_product_t_order" FromRole="t_order" ToRole="t_order_product" />
+        </EntityType>
+        <EntityType Name="OrderProduct">
+          <Key>
+            <PropertyRef Name="OrderId" />
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="OrderId" Type="Int32" Nullable="false" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="Count" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_t_order_product_t_order" FromRole="t_order_product" ToRole="t_order" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_t_order_product_t_product" FromRole="t_order_product" ToRole="t_product" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProductPrice" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="OrderProducts" Relationship="Self.FK_t_order_product_t_product" FromRole="t_product" ToRole="t_order_product" />
+        </EntityType>
+        <Association Name="FK_t_order_t_customers">
+          <End Role="t_customers" Type="ArtcomDBModel.Customer" Multiplicity="1" />
+          <End Role="t_order" Type="ArtcomDBModel.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_customers">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="t_order">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_t_order_product_t_order">
+          <End Role="t_order" Type="ArtcomDBModel.Order" Multiplicity="1" />
+          <End Role="t_order_product" Type="ArtcomDBModel.OrderProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_order">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="t_order_product">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_t_order_product_t_product">
+          <End Role="t_product" Type="ArtcomDBModel.Product" Multiplicity="1" />
+          <End Role="t_order_product" Type="ArtcomDBModel.OrderProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="t_order_product">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ArtcomDBEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Customers" EntityType="ArtcomDBModel.Customer" />
+          <EntitySet Name="Orders" EntityType="ArtcomDBModel.Order" />
+          <EntitySet Name="OrderProducts" EntityType="ArtcomDBModel.OrderProduct" />
+          <EntitySet Name="Products" EntityType="ArtcomDBModel.Product" />
+          <AssociationSet Name="FK_t_order_t_customers" Association="Self.FK_t_order_t_customers">
+            <End Role="t_customers" EntitySet="Customers" />
+            <End Role="t_order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_t_order_product_t_order" Association="Self.FK_t_order_product_t_order">
+            <End Role="t_order" EntitySet="Orders" />
+            <End Role="t_order_product" EntitySet="OrderProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_t_order_product_t_product" Association="Self.FK_t_order_product_t_product">
+            <End Role="t_product" EntitySet="Products" />
+            <End Role="t_order_product" EntitySet="OrderProducts" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище ArtcomDBModelContainer" CdmEntityContainer="ArtcomDBEntities1">
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="ArtcomDBModel.Customer">
+              <MappingFragment StoreEntitySet="t_customers">
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="ArtcomDBModel.Order">
+              <MappingFragment StoreEntitySet="t_order">
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderProducts">
+            <EntityTypeMapping TypeName="ArtcomDBModel.OrderProduct">
+              <MappingFragment StoreEntitySet="t_order_product">
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="ArtcomDBModel.Product">
+              <MappingFragment StoreEntitySet="t_product">
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductPrice" ColumnName="ProductPrice" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
