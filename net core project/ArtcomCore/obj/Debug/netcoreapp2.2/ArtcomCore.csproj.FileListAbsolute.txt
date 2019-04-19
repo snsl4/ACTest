@@ -1,0 +1,11 @@
+C:\Users\snsl\source\repos\ArtcomCore\ArtcomCore\bin\Debug\netcoreapp2.2\ArtcomCore.deps.json
+C:\Users\snsl\source\repos\ArtcomCore\ArtcomCore\bin\Debug\netcoreapp2.2\ArtcomCore.runtimeconfig.json
+C:\Users\snsl\source\repos\ArtcomCore\ArtcomCore\bin\Debug\netcoreapp2.2\ArtcomCore.runtimeconfig.dev.json
+C:\Users\snsl\source\repos\ArtcomCore\ArtcomCore\bin\Debug\netcoreapp2.2\ArtcomCore.dll
+C:\Users\snsl\source\repos\ArtcomCore\ArtcomCore\obj\Debug\netcoreapp2.2\ArtcomCore.csprojAssemblyReference.cache
+C:\Users\snsl\source\repos\ArtcomCore\ArtcomCore\obj\Debug\netcoreapp2.2\ArtcomCore.csproj.CoreCompileInputs.cache
+C:\Users\snsl\source\repos\ArtcomCore\ArtcomCore\obj\Debug\netcoreapp2.2\ArtcomCore.AssemblyInfoInputs.cache
+C:\Users\snsl\source\repos\ArtcomCore\ArtcomCore\obj\Debug\netcoreapp2.2\ArtcomCore.AssemblyInfo.cs
+C:\Users\snsl\source\repos\ArtcomCore\ArtcomCore\bin\Debug\netcoreapp2.2\ArtcomCore.pdb
+C:\Users\snsl\source\repos\ArtcomCore\ArtcomCore\obj\Debug\netcoreapp2.2\ArtcomCore.dll
+C:\Users\snsl\source\repos\ArtcomCore\ArtcomCore\obj\Debug\netcoreapp2.2\ArtcomCore.pdb
