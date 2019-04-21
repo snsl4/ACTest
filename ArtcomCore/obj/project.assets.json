@@ -3677,11 +3677,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\snsl\\source\\repos\\ArtcomCore\\ArtcomCore\\ArtcomCore.csproj",
+      "projectUniqueName": "C:\\Users\\snsl\\Desktop\\ArtComTest\\ArtcomCore\\ArtcomCore.csproj",
       "projectName": "ArtcomCore",
-      "projectPath": "C:\\Users\\snsl\\source\\repos\\ArtcomCore\\ArtcomCore\\ArtcomCore.csproj",
+      "projectPath": "C:\\Users\\snsl\\Desktop\\ArtComTest\\ArtcomCore\\ArtcomCore.csproj",
       "packagesPath": "C:\\Users\\snsl\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\snsl\\source\\repos\\ArtcomCore\\ArtcomCore\\obj\\",
+      "outputPath": "C:\\Users\\snsl\\Desktop\\ArtComTest\\ArtcomCore\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

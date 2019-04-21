@@ -7,7 +7,7 @@ namespace ArtcomCore.Tests
     public class UnitTest1
     {
         [Fact]
-        public void Test1()
+        public void TestGetCustomer_ListTCustomers()
         {
             var db = new ArtcomDBContext();
 
@@ -17,14 +17,14 @@ namespace ArtcomCore.Tests
         }
 
         [Fact]
-        public void Test2()
+        public void TestGetCustomerId_Name()
         {
             var db = new ArtcomDBContext();
 
             string exp = "Петров Владимир Иванович";
             string result = "";
-            foreach (TCustomers lol in Query.GetCustomer(2))
-                result = lol.CustomerName;
+            foreach (TCustomers customer in Query.GetCustomer(2))
+                result = customer.CustomerName;
 
             Assert.Equal(exp, result);
         }
