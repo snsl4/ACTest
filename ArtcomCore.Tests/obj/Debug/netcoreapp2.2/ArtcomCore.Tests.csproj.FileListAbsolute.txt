@@ -1,0 +1,17 @@
+C:\Users\snsl\source\repos\ArtcomCore\ArtcomCore.Tests\bin\Debug\netcoreapp2.2\xunit.runner.visualstudio.dotnetcore.testadapter.dll
+C:\Users\snsl\source\repos\ArtcomCore\ArtcomCore.Tests\bin\Debug\netcoreapp2.2\xunit.runner.reporters.netcoreapp10.dll
+C:\Users\snsl\source\repos\ArtcomCore\ArtcomCore.Tests\bin\Debug\netcoreapp2.2\xunit.runner.utility.netcoreapp10.dll
+C:\Users\snsl\source\repos\ArtcomCore\ArtcomCore.Tests\bin\Debug\netcoreapp2.2\ArtcomCore.Tests.deps.json
+C:\Users\snsl\source\repos\ArtcomCore\ArtcomCore.Tests\bin\Debug\netcoreapp2.2\ArtcomCore.Tests.runtimeconfig.json
+C:\Users\snsl\source\repos\ArtcomCore\ArtcomCore.Tests\bin\Debug\netcoreapp2.2\ArtcomCore.Tests.runtimeconfig.dev.json
+C:\Users\snsl\source\repos\ArtcomCore\ArtcomCore.Tests\bin\Debug\netcoreapp2.2\ArtcomCore.Tests.dll
+C:\Users\snsl\source\repos\ArtcomCore\ArtcomCore.Tests\bin\Debug\netcoreapp2.2\ArtcomCore.Tests.pdb
+C:\Users\snsl\source\repos\ArtcomCore\ArtcomCore.Tests\bin\Debug\netcoreapp2.2\ArtcomCore.dll
+C:\Users\snsl\source\repos\ArtcomCore\ArtcomCore.Tests\bin\Debug\netcoreapp2.2\ArtcomCore.pdb
+C:\Users\snsl\source\repos\ArtcomCore\ArtcomCore.Tests\obj\Debug\netcoreapp2.2\ArtcomCore.Tests.csprojAssemblyReference.cache
+C:\Users\snsl\source\repos\ArtcomCore\ArtcomCore.Tests\obj\Debug\netcoreapp2.2\ArtcomCore.Tests.csproj.CoreCompileInputs.cache
+C:\Users\snsl\source\repos\ArtcomCore\ArtcomCore.Tests\obj\Debug\netcoreapp2.2\ArtcomCore.Tests.AssemblyInfoInputs.cache
+C:\Users\snsl\source\repos\ArtcomCore\ArtcomCore.Tests\obj\Debug\netcoreapp2.2\ArtcomCore.Tests.AssemblyInfo.cs
+C:\Users\snsl\source\repos\ArtcomCore\ArtcomCore.Tests\obj\Debug\netcoreapp2.2\ArtcomCore.Tests.csproj.CopyComplete
+C:\Users\snsl\source\repos\ArtcomCore\ArtcomCore.Tests\obj\Debug\netcoreapp2.2\ArtcomCore.Tests.dll
+C:\Users\snsl\source\repos\ArtcomCore\ArtcomCore.Tests\obj\Debug\netcoreapp2.2\ArtcomCore.Tests.pdb
